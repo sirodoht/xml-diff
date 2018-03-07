@@ -12,6 +12,7 @@ def diff(left, right):
 
     Adapted from https://github.com/paulgb/simplediff
     """
+    # Map that shows when each value appears on the left version.
     left_index_map = {}
     for index, value in enumerate(left):
         left_index_map.setdefault(value, []).append(index)
@@ -25,16 +26,22 @@ def diff(left, right):
     for index_right, value_right in enumerate(right):
         new_overlap = {}
         for index_left in left_index_map.get(value_right, []):
+            # this is only for unchanged lines in the two versions
             new_overlap[index_left] = (index_left and overlap.get(index_left - 1, 0)) + 1
             if(new_overlap[index_left] > substr_length):
+                # we found a new largest substring so far
                 substr_length = new_overlap[index_left]
                 substr_start_old = index_left - substr_length + 1
                 substr_start_new = index_right - substr_length + 1
         overlap = new_overlap
 
     if not substr_length:
+        # case when there is no overlapped string,
+        # which means it's either an addition or a deletion
         return (left and [('-', left)] or []) + (right and [('+', right)] or [])
     else:
+        # case when the overlapped string is unchanged,
+        # so recursively diff the text before and after that string
         return diff(left[:substr_start_old], right[:substr_start_new]) + \
                [('=', right[substr_start_new: substr_start_new + substr_length])] + \
                diff(left[substr_start_old + substr_length:], right[substr_start_new + substr_length:])
