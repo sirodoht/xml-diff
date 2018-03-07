@@ -2,7 +2,7 @@
 
 Contents:
 
-[`diff.py`](diff.py): main diff algorithm file  
+[`diff.py`](diff.py): main diff algorithm module  
 [`demo.py`](demo.py): module that uses diff with demo data  
 [`benchmark.py`](benchmark.py): module that uses diff with various data files inside [datafiles](datafiles) directory  
 
