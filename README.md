@@ -37,6 +37,6 @@ For every record, the `left` file includes 6 properties, and the `right` 5, so
 in (almost) all diffs the algorithm has to find lines that miss and lines that
 exist in both versions (left and right). There are two exceptions, `65x_add`
 and `65x_add_minus`. In `65x_add` the right version has more lines than the left,
-and in `65x_add_minus` there are lines both line additions and line deletions.
-As we can see in the benchmarks, it didn't much difference to the algorithm time,
-at least in those sizes.
+and in `65x_add_minus` there are both line additions and line deletions. As we 
+can see in the benchmarks, it didn't make much difference to the duration
+(at least for those file sizes).
