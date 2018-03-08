@@ -32,9 +32,9 @@ Memory was measured with [`memory-profiler`](https://pypi.python.org/pypi/memory
 
 ## Datafiles
 
-Each number per datafile expresses the number of records this XML file holds.
-For every record, the `left` file includes 6 properties, and the `right` 5, so
-in (almost) all diffs the algorithm has to find lines that miss and lines that
+Each number on the data filename expresses the number of records this XML file holds.
+For every such record, the `left` file includes 6 properties, and the `right` 5, 
+so in (almost) all diffs the algorithm has to find lines that miss and lines that
 exist in both versions (left and right). There are two exceptions, `65x_add`
 and `65x_add_minus`. In `65x_add` the right version has more lines than the left,
 and in `65x_add_minus` there are both line additions and line deletions. As we 
